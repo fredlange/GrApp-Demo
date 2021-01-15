@@ -1,0 +1,28 @@
+{
+  "name": "grapp-demos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:orator": "ts-node ./src/orator.ts",
+    "start:spectator:dev": "nodemon --watch '*.ts' --exec 'ts-node' ./src/spectator.ts",
+    "start:app1:dev": "nodemon --watch '*.ts' --exec 'ts-node' ./src/app.ts",
+    "start:app2:dev": "nodemon --watch '*.ts' --exec 'ts-node' ./src/app2.ts",
+    "test": "jest",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@graphle/graphlet": "0.1.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.0",
+    "jest": "^26.6.1",
+    "nodemon": "^2.0.6",
+    "ts-jest": "^26.4.3",
+    "typescript": "^4.0.5"
+  }
+}
