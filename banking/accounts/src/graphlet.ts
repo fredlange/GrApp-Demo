@@ -1,26 +1,39 @@
-import {Graphlet} from "@graphle/graphlet"
-import gql from "graphql-tag"
+import { Graphlet } from '@graphle/graphlet';
 
+
+const DummyAccounts = {}
 
 const root = {
-    Query: () => {
-        account: () => {}
+  account: async (args) => {
+    return DummyAccounts[args.id];
+  },
+  createAccount: async (args) => {
+    const generatedSimpleId = Date.now()
+    DummyAccounts[generatedSimpleId] = {
+        id: generatedSimpleId,
+        customerId: args.customerId,
+        balance: 0
     }
-}
+    return DummyAccounts[generatedSimpleId]
+  }
+};
 
-const source = gql`
-type Account: {
+const source = `
+  type Query {
+    account(id: String!): Account
+  }
+  type Account {
     id: String!
     customerId: String!
     balance: Int
-}
-type Query {
-    account(id: String!): Account
-}
-`
+  }
+  type Mutation {
+      createAccount(customerId: String!): Account!
+  }
+`;
 
 export const app = Graphlet.joinAsPeer({
-    name: 'accounts-graphlet',
-    source: source,
-    root: root
-})
+  name: 'accounts-graphlet',
+  source: source,
+  rootResolver: root,
+});
