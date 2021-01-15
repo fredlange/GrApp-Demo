@@ -1,25 +1,19 @@
-import { Graphlet } from '@graphle/graphlet';
-import gql from 'graphql-tag';
 
-
-const DummyCustomers = {}
+const DummyCustomers = {};
 
 export const root = {
+  customer: (args) => DummyCustomers[args.id],
+  findCustomers: (args) =>
+    Object.entries(DummyCustomers)
+      .filter(([id, customer]) => customer['name'] == args.name)
+      .map(([k, v]) => v),
+  createCustomer: (args) => {
+    const generatedSimpleId = Date.now();
+    DummyCustomers[generatedSimpleId] = {
+      id: generatedSimpleId,
+      name: args.name,
+    };
 
-    customer: (args) => {
-      return DummyCustomers[args.id]
-    },
-    findCustomer: (args) => {
-      return []
-    },
-    createCustomer: (args) => {
-      const generatedSimpleId = Date.now()
-      DummyCustomers[generatedSimpleId] = {
-        id: generatedSimpleId,
-        name: args.name
-      }
-
-    return DummyCustomers[generatedSimpleId]
-    }
-
+    return DummyCustomers[generatedSimpleId];
+  },
 };
