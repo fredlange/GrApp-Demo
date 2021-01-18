@@ -1,15 +1,11 @@
-# GrApp Demo
-This is only demos of GrApp. For the source visit [this repository](https://github.com/fredlange/GrApp)
+# Graphle Demo
+This is only demos of Graphle. For the source visit [this repository](https://github.com/fredlange/Graphle)
 
-## Getting started
-* First start the manager `npm run start:orator`
-* App `npm run start:app1:dev`
-* App2 `npm run start:app2:dev`
-* Spectator `npm run start:spectator:dev`
-
-### The Orator
-The orator is the only application with a fixed port. All apps notify the orator of their liveliness and the orator then broadcast that state to all other apps, hence keeping in sync (or so they should be).
-### Demo apps
-App and app2 are the most simplistic apps to showcase how GrApp is used by an end user
-### Spectator
-The spectator provided sets up a graphiql instance to be able to use http to query against the flexible schema. The subschemas of the spectator will use UDP.
+## Using the demos
+Each demo har its own package.json with some scripts that will help run the demo. Check them out.
+### Simple
+Bare minimum of what a Graphle app looks like
+### Banking
+The most simplistic banking app. Add a customer, add accounts, spend money, make money.
+### Containers
+TODO Showcase how Graphle runs using containers 
